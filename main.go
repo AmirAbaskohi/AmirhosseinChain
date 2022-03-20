@@ -6,7 +6,7 @@ import (
 )
 
 type BlockChain struct {
-	block []*Block
+	blocks []*Block
 }
 
 type Block struct {
@@ -25,6 +25,12 @@ func CreateBlock(data string, prevHash []byte) *Block {
 	block := &Block{[]byte{}, []byte(data), prevHash}
 	block.DeriveHash()
 	return block
+}
+
+func (chain *BlockChain) AddBlock(data string) {
+	prevBlock := chain.blocks[len(chain.blocks)-1]
+	new := CreateBlock(data, prevBlock.Hash)
+	chain.blocks = append(chain.blocks, new)
 }
 
 func main() {
