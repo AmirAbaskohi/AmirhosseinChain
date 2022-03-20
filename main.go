@@ -37,5 +37,14 @@ func Genesis() *Block {
 	return CreateBlock("Genesis", []byte{})
 }
 
+func InitBlockChain() *BlockChain {
+	return &BlockChain{[]*Block{Genesis()}}
+}
+
 func main() {
+	chain := InitBlockChain()
+
+	chain.AddBlock("First block after genesis")
+	chain.AddBlock("Second block after genesis")
+	chain.AddBlock("Third block after genesis")
 }
