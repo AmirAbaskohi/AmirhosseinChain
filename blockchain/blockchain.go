@@ -15,6 +15,11 @@ type BlockChain struct {
 	Database *badger.DB
 }
 
+type BlockChainIterator struct {
+	CurrentHash []byte
+	Database    *badger.DB
+}
+
 func InitBlockChain() *BlockChain {
 	var lastHash []byte
 
