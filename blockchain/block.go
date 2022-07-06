@@ -15,13 +15,13 @@ type Block struct {
 }
 
 func (b *Block) HashTransactions() []byte {
-	var txHahses [][]byte
+	var txHashes [][]byte
 	var txHash [32]byte
 
 	for _, tx := range b.Transactions {
-		txHahses = append(txHahses, tx.ID)
+		txHashes = append(txHashes, tx.ID)
 	}
-	txHash = sha256.Sum256(bytes.Join(txHahses, []byte{}))
+	txHash = sha256.Sum256(bytes.Join(txHashes, []byte{}))
 
 	return txHash[:]
 }
